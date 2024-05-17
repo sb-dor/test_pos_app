@@ -12,7 +12,11 @@ class OrderFeatureAddDbUsecase {
         item: item,
       );
 
-  Future<bool> finishCustomerInvoice(Place? place) => _featureRepo.finishInvoice(place);
+  Future<bool> finishCustomerInvoice(Place? place, List<OrderItem> items) =>
+      _featureRepo.finishInvoice(place, items);
 
   Future<List<OrderItem>> dbOrderItems(Place? place) => _featureRepo.dbOrderItems(place);
+
+  Future<void> deleteOrderItemFromOrder(OrderItem? item, Place? place) =>
+      _featureRepo.deleteOrderItemFromOrder(item, place);
 }

@@ -14,6 +14,7 @@ class CustomerInvoice {
   final double? totalQty;
   final String? status;
   final List<CustomerInvoiceDetail>? details;
+  final String? invoiceDateTime;
 
   const CustomerInvoice({
     required this.id,
@@ -23,5 +24,6 @@ class CustomerInvoice {
     required this.totalQty,
     required this.status,
     required this.details,
+    required this.invoiceDateTime,
   });
 }

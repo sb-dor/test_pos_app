@@ -15,8 +15,13 @@ class OrderFeatureRepoImpl implements OrderFeatureRepo {
       );
 
   @override
-  Future<bool> finishInvoice(Place? place) => _featureSource.finishInvoice(place);
+  Future<bool> finishInvoice(Place? place, List<OrderItem> items) =>
+      _featureSource.finishInvoice(place, items);
 
   @override
   Future<List<OrderItem>> dbOrderItems(Place? place) => _featureSource.dbOrderItems(place);
+
+  @override
+  Future<void> deleteOrderItemFromOrder(OrderItem? item, Place? place) =>
+      _featureSource.deleteOrderItemFromOrder(item, place);
 }

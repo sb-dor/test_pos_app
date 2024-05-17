@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
 import 'package:test_pos_app/features/order_feature/domain/repo/order_feature_repo.dart';
 import 'package:test_pos_app/features/order_feature/domain/usecases/order_feature_adddb_usecase/order_feature_adddb_usecase.dart';
 import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_events.dart';
@@ -50,6 +51,10 @@ class OrderFeatureBloc {
       yield* _addProductToOrderEvent(event);
     } else if (event is DecrementOrderItemQtyEvent) {
       yield* _decrementOrderItemQtyEvent(event);
+    } else if (event is AddOrderItemForChange) {
+      yield* _addOrderItemForChange(event);
+    } else if (event is DeleteOrderItemFromOrder) {
+      yield* _deleteOrderItemFromOrder(event);
     } else if (event is FinishCustomerInvoice) {
       yield* _finishCustomerInvoice(event);
     }
@@ -57,7 +62,14 @@ class OrderFeatureBloc {
 
   static Stream<OrderFeatureStates> _addPlaceEvent(AddPlaceEvent event) async* {
     _currentStateModel.setPlace(event.place);
-    final items = await _addDbUsecase.dbOrderItems(event.place);
+
+    // the reason why I did so - is that somehow the Future<List<OrderItem>> which
+    // i'm calling becomes the type of List<OrderItemModel>
+    // otherwise if wouldn't do this it would throw an error
+    final List<OrderItem> items = (await _addDbUsecase.dbOrderItems(event.place))
+        .map<OrderItem>((item) => item as OrderItem)
+        .toList();
+    debugPrint("order items type: ${items.runtimeType}");
     _currentStateModel.initOrders(items);
     yield InitialOrderFeatureState(_currentStateModel);
   }
@@ -81,8 +93,27 @@ class OrderFeatureBloc {
   }
 
   static Stream<OrderFeatureStates> _finishCustomerInvoice(FinishCustomerInvoice event) async* {
-    final result = await _addDbUsecase.finishCustomerInvoice(_currentStateModel.place);
+    final result = await _addDbUsecase.finishCustomerInvoice(
+      _currentStateModel.place,
+      _currentStateModel.orderItems,
+    );
     if (result) _currentStateModel.clearData();
+    yield InitialOrderFeatureState(_currentStateModel);
+  }
+
+  static Stream<OrderFeatureStates> _addOrderItemForChange(AddOrderItemForChange event) async* {
+    _currentStateModel.setToChangeOrderItem(event.orderItem);
+    yield InitialOrderFeatureState(_currentStateModel);
+  }
+
+  static Stream<OrderFeatureStates> _deleteOrderItemFromOrder(
+    DeleteOrderItemFromOrder event,
+  ) async* {
+    await _addDbUsecase.deleteOrderItemFromOrder(
+      _currentStateModel.orderItemForChange,
+      _currentStateModel.place,
+    );
+    _currentStateModel.removeOrderItemFromOrder();
     yield InitialOrderFeatureState(_currentStateModel);
   }
 }

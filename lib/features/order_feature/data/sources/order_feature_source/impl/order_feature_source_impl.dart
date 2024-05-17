@@ -16,11 +16,19 @@ class OrderFeatureSourceImpl implements OrderFeatureSource {
   }
 
   @override
-  Future<bool> finishInvoice(Place? place) => _localDb.finishCustomerInvoice(place);
+  Future<bool> finishInvoice(Place? place, List<OrderItem> items) =>
+      _localDb.finishCustomerInvoice(place, items);
 
   @override
   Future<List<OrderItemModel>> dbOrderItems(Place? place) async {
     final customerInvoicesDetails = await _localDb.customerInvoiceDetails(place);
     return customerInvoicesDetails.map((e) => OrderItemModel.fromCustomerInvoiceDetail(e)).toList();
   }
+
+  @override
+  Future<void> deleteOrderItemFromOrder(OrderItem? item, Place? place) =>
+      _localDb.deleteOrderItemFromOrder(
+        item,
+        place,
+      );
 }

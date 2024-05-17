@@ -10,8 +10,20 @@ abstract class GlobalData {
   static const Waiter currentWaiter = Waiter(id: 1, name: "Andrew Tate");
 
   static List<Place> places = [
-    const Place(id: 1, name: Constants.mainHall, vip: false),
-    const Place(id: 2, name: Constants.letka, vip: false),
+    Place(
+      id: 1,
+      name: Constants.mainHall,
+      vip: false,
+      icon: const Icon(Icons.list_alt, color: Colors.blue),
+      color: Colors.amberAccent.shade100,
+    ),
+    Place(
+      id: 2,
+      name: Constants.letka,
+      vip: false,
+      icon: const Icon(Icons.list_alt, color: Colors.blue),
+      color: Colors.amberAccent.shade100,
+    ),
     Place(
       id: 3,
       name: Constants.vip1,

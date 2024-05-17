@@ -27,7 +27,7 @@ class MainAppDrawer extends StatelessWidget {
             title: const Text(Constants.cashier),
             onTap: () {
               Navigator.pop(context);
-              AutoRouter.of(context).replaceAll([const OrderFeatureRoute()]);
+              AutoRouter.of(context).replaceAll([const CashierRoute()]);
             },
           ),
           ListTile(

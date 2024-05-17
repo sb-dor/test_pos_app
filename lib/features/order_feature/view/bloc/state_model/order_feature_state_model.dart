@@ -22,14 +22,25 @@ class OrderFeatureStateModel {
 
   Category? get category => _category;
 
+  OrderItem? _orderItemForChange;
+
+  OrderItem? get orderItemForChange => _orderItemForChange;
+
   List<Product> get productsForShow => _productsForShow;
 
   void setPlace(Place? place) => _place = place;
 
   void setCategory(Category? category) => _category = category;
 
+  void setToChangeOrderItem(OrderItem? orderItem) => _orderItemForChange = orderItem;
+
   void chantShowingProductByCategory(Category? category) {
     _productsForShow = GlobalData.products.where((e) => e.category?.id == category?.id).toList();
+  }
+
+  void removeOrderItemFromOrder() {
+    _orderItems.removeWhere((e) => e.product?.id == _orderItemForChange?.product?.id);
+    _orderItemForChange = null;
   }
 
   void initOrders(List<OrderItem> items) => _orderItems = items;

@@ -4,7 +4,9 @@ import 'package:test_pos_app/features/order_feature/domain/entities/order_item.d
 abstract class OrderFeatureRepo {
   Future<void> addToDb({required Place? place, required OrderItem? item});
 
-  Future<bool> finishInvoice(Place? place);
+  Future<bool> finishInvoice(Place? place, List<OrderItem> items);
 
   Future<List<OrderItem>> dbOrderItems(Place? place);
+
+  Future<void> deleteOrderItemFromOrder(OrderItem? item, Place? place);
 }

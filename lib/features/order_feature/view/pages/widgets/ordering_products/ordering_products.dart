@@ -98,6 +98,8 @@ class _OrderingProductsState extends State<OrderingProducts> {
                         Text(
                           "${product.name}",
                           textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         )
                       ],
                     ),

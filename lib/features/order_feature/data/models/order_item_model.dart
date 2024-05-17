@@ -25,10 +25,6 @@ class OrderItemModel extends OrderItem {
     );
   }
 
-  Map<String, dynamic> toDb(int customerInvoiceId) {
-    return {};
-  }
-
   double total() {
     return (price ?? 0.0) * (qty ?? 0.0);
   }
