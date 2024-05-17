@@ -9,4 +9,6 @@ abstract class Constants {
   static const salesMode = "Режим продаж";
   static const firstFoods = "1 блюда";
   static const secondFoods = "2 блюда";
+  static const pay = "Оплатить";
+  static const cashier = "Кассир";
 }

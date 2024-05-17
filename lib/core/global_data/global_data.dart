@@ -7,7 +7,7 @@ import 'package:test_pos_app/core/global_models/entities/waiter.dart';
 import 'package:test_pos_app/core/global_usages/constants/constants.dart';
 
 abstract class GlobalData {
-  static const Waiter currentWaiter = Waiter(id: 1, name: "Avaz");
+  static const Waiter currentWaiter = Waiter(id: 1, name: "Andrew Tate");
 
   static List<Place> places = [
     const Place(id: 1, name: Constants.mainHall, vip: false),
@@ -30,7 +30,7 @@ abstract class GlobalData {
 
   static const List<Category> categories = [
     Category(id: 1, name: Constants.firstFoods),
-    Category(id: 1, name: Constants.secondFoods),
+    Category(id: 2, name: Constants.secondFoods),
   ];
 
   static List<Product> products = [

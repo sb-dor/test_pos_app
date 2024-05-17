@@ -8,6 +8,7 @@ class CustomerInvoiceDetail {
   final Product? product;
   final double? price;
   final double? qty;
+  final double? total;
 
   const CustomerInvoiceDetail({
     required this.id,
@@ -15,5 +16,6 @@ class CustomerInvoiceDetail {
     required this.product,
     required this.price,
     required this.qty,
+    required this.total,
   });
 }
