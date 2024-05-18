@@ -59,7 +59,7 @@ class CashierInvoiceWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    "№${customerInvoice.id} 15:45",
+                    "№${customerInvoice.id} ${customerInvoice.invoiceDateTime?.substring(0, 19)}",
                     style: const TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w400,

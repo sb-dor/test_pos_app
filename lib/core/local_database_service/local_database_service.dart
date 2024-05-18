@@ -6,6 +6,7 @@ import 'package:test_pos_app/core/global_models/entities/customer_invoice_detail
 import 'package:test_pos_app/core/global_models/entities/place.dart';
 import 'package:test_pos_app/core/global_models/models/customer_invoice_detail_model/customer_invoice_detail_model.dart';
 import 'package:test_pos_app/core/global_models/models/customer_invoice_model/customer_invoice_model.dart';
+import 'package:test_pos_app/core/global_usages/constants/constants.dart';
 import 'package:test_pos_app/core/global_usages/extensions/order_item_extentions.dart';
 import 'package:test_pos_app/features/order_feature/data/models/order_item_model.dart';
 import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
@@ -48,7 +49,7 @@ class LocalDatabaseService {
     final checkInvoiceForPlace = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status = ?",
-      whereArgs: [place?.id, "PENDING"],
+      whereArgs: [place?.id, Constants.PENDING],
     );
 
     int? customerInvoiceId;
@@ -59,7 +60,7 @@ class LocalDatabaseService {
         {
           "waiter_id": GlobalData.currentWaiter.id,
           "place_id": place?.id,
-          "status": "PENDING",
+          "status": Constants.PENDING,
         },
       );
     } else {
@@ -104,7 +105,7 @@ class LocalDatabaseService {
     final checkInvoiceForPlace = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status = ?",
-      whereArgs: [place?.id, "PENDING"],
+      whereArgs: [place?.id, Constants.PENDING],
     );
     if (checkInvoiceForPlace.isNotEmpty) {
       await database.delete(
@@ -139,8 +140,8 @@ class LocalDatabaseService {
         "total_qty": items.totalQty(),
         "invoice_datetime": currentDateTime,
       },
-      where: "place_id = ?",
-      whereArgs: [place?.id],
+      where: "place_id = ? and status = ?",
+      whereArgs: [place?.id, Constants.PENDING],
     );
 
     return true;
@@ -170,7 +171,7 @@ class LocalDatabaseService {
         .toList();
 
     return (await database.query(customerInvoiceTable,
-            where: "status is null", orderBy: "invoice_datetime"))
+            where: "status is null", orderBy: "invoice_datetime desc"))
         .map((invoice) => CustomerInvoiceModel.fromDb(
             invoice, details.where((e) => e.customerInvoiceId == invoice['id']).toList()))
         .toList();

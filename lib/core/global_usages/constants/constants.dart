@@ -11,4 +11,7 @@ abstract class Constants {
   static const secondFoods = "2 блюда";
   static const pay = "Оплатить";
   static const cashier = "Кассир";
+
+  //
+  static const String PENDING = "PENDING";
 }

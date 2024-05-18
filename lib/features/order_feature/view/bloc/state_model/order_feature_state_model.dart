@@ -74,7 +74,6 @@ class OrderFeatureStateModel {
   }
 
   void clearData() {
-    _place = null;
     _orderItems.clear();
   }
 }
