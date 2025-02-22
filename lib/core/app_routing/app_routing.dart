@@ -6,7 +6,7 @@ import 'package:test_pos_app/features/order_feature/view/pages/screens/sales_mod
 part 'app_routing.gr.dart';
 
 @AutoRouterConfig()
-class AppRouting extends _$AppRouting {
+class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(

@@ -18,7 +18,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final _autoRoting = AppRouting();
+  final _autoRoting = AppRouter();
 
   @override
   Widget build(BuildContext context) {

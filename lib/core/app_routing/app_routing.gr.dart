@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -9,71 +10,50 @@
 
 part of 'app_routing.dart';
 
-abstract class _$AppRouting extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouting({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    CashierRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CashierPage(),
-      );
-    },
-    OrderFeatureRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrderFeaturePage(),
-      );
-    },
-    SalesModeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SalesModeScreen(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [CashierPage]
 class CashierRoute extends PageRouteInfo<void> {
   const CashierRoute({List<PageRouteInfo>? children})
-      : super(
-          CashierRoute.name,
-          initialChildren: children,
-        );
+    : super(CashierRoute.name, initialChildren: children);
 
   static const String name = 'CashierRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CashierPage();
+    },
+  );
 }
 
 /// generated route for
 /// [OrderFeaturePage]
 class OrderFeatureRoute extends PageRouteInfo<void> {
   const OrderFeatureRoute({List<PageRouteInfo>? children})
-      : super(
-          OrderFeatureRoute.name,
-          initialChildren: children,
-        );
+    : super(OrderFeatureRoute.name, initialChildren: children);
 
   static const String name = 'OrderFeatureRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderFeaturePage();
+    },
+  );
 }
 
 /// generated route for
 /// [SalesModeScreen]
 class SalesModeRoute extends PageRouteInfo<void> {
   const SalesModeRoute({List<PageRouteInfo>? children})
-      : super(
-          SalesModeRoute.name,
-          initialChildren: children,
-        );
+    : super(SalesModeRoute.name, initialChildren: children);
 
   static const String name = 'SalesModeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SalesModeScreen();
+    },
+  );
 }
