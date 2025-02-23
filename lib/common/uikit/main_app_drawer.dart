@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/app_routing/app_routing.dart';
-import 'package:test_pos_app/core/global_data/global_data.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/app_routing/app_routing.dart';
+import 'package:test_pos_app/common/global_data/global_data.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
 
 class MainAppDrawer extends StatelessWidget {
   const MainAppDrawer({super.key});

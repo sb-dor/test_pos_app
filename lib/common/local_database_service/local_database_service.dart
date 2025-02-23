@@ -1,16 +1,8 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-import 'package:test_pos_app/core/global_data/global_data.dart';
-import 'package:test_pos_app/core/global_models/entities/customer_invoice.dart';
-import 'package:test_pos_app/core/global_models/entities/customer_invoice_detail.dart';
-import 'package:test_pos_app/core/global_models/entities/place.dart';
-import 'package:test_pos_app/core/global_models/models/customer_invoice_detail_model/customer_invoice_detail_model.dart';
-import 'package:test_pos_app/core/global_models/models/customer_invoice_model/customer_invoice_model.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
-import 'package:test_pos_app/core/global_usages/extensions/order_item_extentions.dart';
 import 'package:test_pos_app/features/order_feature/data/models/order_item_model.dart';
 import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
 
+@Deprecated("No useful anymore")
 class LocalDatabaseService {
   late final Database database;
 

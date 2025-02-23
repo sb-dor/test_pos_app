@@ -1,37 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/global_models/entities/category.dart';
-import 'package:test_pos_app/core/global_models/entities/place.dart';
-import 'package:test_pos_app/core/global_models/entities/product.dart';
-import 'package:test_pos_app/core/global_models/entities/waiter.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/models/category_model.dart';
+import 'package:test_pos_app/common/models/place_model.dart';
+import 'package:test_pos_app/common/models/product_model.dart';
+import 'package:test_pos_app/common/models/waiter_model.dart';
 
 abstract class GlobalData {
-  static const Waiter currentWaiter = Waiter(id: 1, name: "Andrew Tate");
+  static const WaiterModel currentWaiter = WaiterModel(id: 1, name: "Andrew Tate");
 
-  static List<Place> places = [
-    Place(
+  static List<PlaceModel> places = [
+    PlaceModel(
       id: 1,
       name: Constants.mainHall,
       vip: false,
       icon: const Icon(Icons.list_alt, color: Colors.blue),
       color: Colors.amberAccent.shade100,
     ),
-    Place(
+    PlaceModel(
       id: 2,
       name: Constants.letka,
       vip: false,
       icon: const Icon(Icons.list_alt, color: Colors.blue),
       color: Colors.amberAccent.shade100,
     ),
-    Place(
+    PlaceModel(
       id: 3,
       name: Constants.vip1,
       vip: true,
       icon: const Icon(Icons.list_alt, color: Colors.blue),
       color: Colors.amberAccent.shade100,
     ),
-    Place(
+    PlaceModel(
       id: 4,
       name: Constants.vip2,
       vip: true,
@@ -40,61 +40,61 @@ abstract class GlobalData {
     ),
   ];
 
-  static const List<Category> categories = [
-    Category(id: 1, name: Constants.firstFoods),
-    Category(id: 2, name: Constants.secondFoods),
+  static const List<CategoryModel> categories = [
+    CategoryModel(id: 1, name: Constants.firstFoods),
+    CategoryModel(id: 2, name: Constants.secondFoods),
   ];
 
-  static List<Product> products = [
-    Product(
+  static List<ProductModel> products = [
+    ProductModel(
       id: 1,
       category: categories[0],
       name: "Жаранный кортофель",
       price: 10,
     ),
-    Product(
+    ProductModel(
       id: 2,
       category: categories[1],
       name: "Картафан",
       price: 12,
     ),
-    Product(
+    ProductModel(
       id: 3,
       category: categories[0],
       name: "Laptop",
       price: 15,
     ),
-    Product(
+    ProductModel(
       id: 4,
       category: categories[1],
       name: "Липтон",
       price: 11,
     ),
-    Product(
+    ProductModel(
       id: 5,
       category: categories[1],
       name: "Чизбургер",
       price: 9,
     ),
-    Product(
+    ProductModel(
       id: 6,
       category: categories[1],
       name: "Шаверма",
       price: 23,
     ),
-    Product(
+    ProductModel(
       id: 7,
       category: categories[1],
       name: "Биг тейсти",
       price: 32,
     ),
-    Product(
+    ProductModel(
       id: 8,
       category: categories[1],
       name: "SMS MMS",
       price: 30,
     ),
-    Product(
+    ProductModel(
       id: 9,
       category: categories[0],
       name: "Продукт",

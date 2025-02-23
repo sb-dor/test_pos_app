@@ -1,17 +1,26 @@
 import 'package:collection/collection.dart';
-import 'package:test_pos_app/core/global_data/global_data.dart';
-import 'package:test_pos_app/core/global_models/entities/customer_invoice_detail.dart';
+import 'package:flutter/foundation.dart';
+import 'package:test_pos_app/common/global_data/global_data.dart';
+import 'package:test_pos_app/common/models/product_model.dart';
 import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
 
-class CustomerInvoiceDetailModel extends CustomerInvoiceDetail {
+@immutable
+class CustomerInvoiceDetailModel {
   const CustomerInvoiceDetailModel({
-    super.id,
-    super.customerInvoiceId,
-    super.product,
-    super.price,
-    super.qty,
-    super.total,
+    this.id,
+    this.customerInvoiceId,
+    this.product,
+    this.price,
+    this.qty,
+    this.total,
   });
+
+  final int? id;
+  final int? customerInvoiceId;
+  final ProductModel? product;
+  final double? price;
+  final double? qty;
+  final double? total;
 
   factory CustomerInvoiceDetailModel.fromDb(Map<String, dynamic> db) => CustomerInvoiceDetailModel(
         id: db['id'],
@@ -35,6 +44,6 @@ class CustomerInvoiceDetailModel extends CustomerInvoiceDetail {
         "product_id": product?.id,
         "price": price,
         "qty": qty,
-        "total": (price ?? 0.0) * (qty ?? 0.0)
+        "total": (price ?? 0.0) * (qty ?? 0.0),
       };
 }
