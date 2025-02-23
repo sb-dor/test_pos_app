@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_bloc.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_events.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_states.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_events.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_states.dart';
 import 'package:test_pos_app/injections/injections.dart';
 
 class OrderingProducts extends StatefulWidget {

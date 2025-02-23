@@ -1,38 +1,38 @@
-import 'package:test_pos_app/core/global_models/entities/category.dart' as cat;
-import 'package:test_pos_app/core/global_models/entities/place.dart';
 import 'package:flutter/foundation.dart';
-import 'package:test_pos_app/core/global_models/entities/product.dart';
-import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
+import 'package:test_pos_app/common/models/category_model.dart';
+import 'package:test_pos_app/common/models/place_model.dart';
+import 'package:test_pos_app/common/models/product_model.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
 
 @immutable
-class OrderFeatureEvents {}
+sealed class OrderFeatureEvents {}
 
-class AddPlaceEvent extends OrderFeatureEvents {
-  final Place? place;
+final class AddPlaceEvent extends OrderFeatureEvents {
+  final PlaceModel? place;
 
   AddPlaceEvent(this.place);
 }
 
-class SelectCategoryEvent extends OrderFeatureEvents {
-  final cat.Category? category;
+final class SelectCategoryEvent extends OrderFeatureEvents {
+  final CategoryModel? category;
 
   SelectCategoryEvent(this.category);
 }
 
-class AddProductToOrderEvent extends OrderFeatureEvents {
-  final Product? product;
+final class AddProductToOrderEvent extends OrderFeatureEvents {
+  final ProductModel? product;
 
   AddProductToOrderEvent(this.product);
 }
 
-class DecrementOrderItemQtyEvent extends OrderFeatureEvents {
-  final Product? product;
+final class DecrementOrderItemQtyEvent extends OrderFeatureEvents {
+  final ProductModel? product;
 
   DecrementOrderItemQtyEvent(this.product);
 }
 
-class AddOrderItemForChange extends OrderFeatureEvents {
-  final OrderItem? orderItem;
+final class AddOrderItemForChange extends OrderFeatureEvents {
+  final OrderItemModel? orderItem;
 
   AddOrderItemForChange(this.orderItem);
 }

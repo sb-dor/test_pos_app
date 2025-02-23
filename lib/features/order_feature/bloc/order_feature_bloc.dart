@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
-import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
-import 'package:test_pos_app/features/order_feature/domain/repo/order_feature_repo.dart';
-import 'package:test_pos_app/features/order_feature/domain/usecases/order_feature_adddb_usecase/order_feature_adddb_usecase.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_events.dart';
+import 'package:test_pos_app/features/order_feature/data/order_feature_repo.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_states.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/state_model/order_feature_state_model.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
+
+import 'order_feature_events.dart';
+import 'order_feature_states.dart';
+import 'state_model/order_feature_state_model.dart';
 
 @immutable
 class OrderFeatureBloc {
   static late BehaviorSubject<OrderFeatureStates> _currentState;
   static late OrderFeatureStateModel _currentStateModel;
-  static late OrderFeatureAddDbUsecase _addDbUsecase;
+  static late IOrderFeatureRepo _iOrderFeatureRepo;
 
   final Sink<OrderFeatureEvents> events;
   final BehaviorSubject<OrderFeatureStates> _states;
@@ -24,10 +24,10 @@ class OrderFeatureBloc {
   }) : _states = states;
 
   factory OrderFeatureBloc({
-    required OrderFeatureRepo orderFeatureRepo,
+    required IOrderFeatureRepo orderFeatureRepo,
   }) {
     _currentStateModel = OrderFeatureStateModel();
-    _addDbUsecase = OrderFeatureAddDbUsecase(orderFeatureRepo);
+    _iOrderFeatureRepo = orderFeatureRepo;
 
     final eventsBehavior = BehaviorSubject<OrderFeatureEvents>();
 
@@ -63,11 +63,11 @@ class OrderFeatureBloc {
   static Stream<OrderFeatureStates> _addPlaceEvent(AddPlaceEvent event) async* {
     _currentStateModel.setPlace(event.place);
 
-    // the reason why I did so - is that somehow the Future<List<OrderItem>> which
+    // the reason why I did so - is that somehow the Future<List<OrderItemModel>> which
     // i'm calling becomes the type of List<OrderItemModel>
     // otherwise if wouldn't do this it would throw an error
-    final List<OrderItem> items = (await _addDbUsecase.dbOrderItems(event.place))
-        .map<OrderItem>((item) => item as OrderItem)
+    final List<OrderItemModel> items = (await _iOrderFeatureRepo.dbOrderItems(event.place))
+        .map<OrderItemModel>((item) => item)
         .toList();
     debugPrint("order items type: ${items.runtimeType}");
     _currentStateModel.initOrders(items);
@@ -81,19 +81,19 @@ class OrderFeatureBloc {
 
   static Stream<OrderFeatureStates> _addProductToOrderEvent(AddProductToOrderEvent event) async* {
     final item = _currentStateModel.incrementOrderItem(event.product);
-    await _addDbUsecase.addToDb(place: _currentStateModel.place, item: item);
+    await _iOrderFeatureRepo.addToDb(place: _currentStateModel.place, item: item);
     yield InitialOrderFeatureState(_currentStateModel);
   }
 
   static Stream<OrderFeatureStates> _decrementOrderItemQtyEvent(
       DecrementOrderItemQtyEvent event) async* {
     final item = _currentStateModel.decrementOrderItem(event.product);
-    await _addDbUsecase.addToDb(place: _currentStateModel.place, item: item);
+    await _iOrderFeatureRepo.addToDb(place: _currentStateModel.place, item: item);
     yield InitialOrderFeatureState(_currentStateModel);
   }
 
   static Stream<OrderFeatureStates> _finishCustomerInvoice(FinishCustomerInvoice event) async* {
-    final result = await _addDbUsecase.finishCustomerInvoice(
+    final result = await _iOrderFeatureRepo.finishInvoice(
       _currentStateModel.place,
       _currentStateModel.orderItems,
     );
@@ -109,7 +109,7 @@ class OrderFeatureBloc {
   static Stream<OrderFeatureStates> _deleteOrderItemFromOrder(
     DeleteOrderItemFromOrder event,
   ) async* {
-    await _addDbUsecase.deleteOrderItemFromOrder(
+    await _iOrderFeatureRepo.deleteOrderItemFromOrder(
       _currentStateModel.orderItemForChange,
       _currentStateModel.place,
     );

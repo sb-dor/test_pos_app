@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/app_routing/app_routing.dart';
-import 'package:test_pos_app/core/global_models/entities/place.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_bloc.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_events.dart';
+import 'package:test_pos_app/common/app_routing/app_routing.dart';
+import 'package:test_pos_app/common/models/place_model.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_events.dart';
 
 class VipPlaceWidget extends StatelessWidget {
-  final Place place;
+  final PlaceModel place;
   final OrderFeatureBloc orderFeatureBloc;
 
   const VipPlaceWidget({

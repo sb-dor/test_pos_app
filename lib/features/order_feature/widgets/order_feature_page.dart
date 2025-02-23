@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/global_data/global_data.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
-import 'package:test_pos_app/core/global_usages/widges/main_app_drawer.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_bloc.dart';
-import 'package:test_pos_app/features/order_feature/view/pages/widgets/places_widgets/vip_place_widget.dart';
+import 'package:test_pos_app/common/global_data/global_data.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/uikit/main_app_drawer.dart';
+import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
 import 'package:test_pos_app/injections/injections.dart';
 
 import 'widgets/places_widgets/place_widget.dart';
+import 'widgets/places_widgets/vip_place_widget.dart';
 
 @RoutePage()
 class OrderFeaturePage extends StatefulWidget {

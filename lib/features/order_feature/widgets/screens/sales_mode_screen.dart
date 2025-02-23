@@ -1,11 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/global_data/global_data.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
-import 'package:test_pos_app/features/order_feature/view/bloc/order_feature_bloc.dart';
-import 'package:test_pos_app/features/order_feature/view/pages/screens/sales_mode_screens/sales_mode_products_screen.dart';
-import 'package:test_pos_app/features/order_feature/view/pages/screens/sales_mode_screens/sales_mode_settings_screen.dart';
-import 'package:test_pos_app/injections/injections.dart';
+import 'package:test_pos_app/common/global_data/global_data.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
+import 'sales_mode_screens/sales_mode_products_screen.dart';
+import 'sales_mode_screens/sales_mode_settings_screen.dart';
 
 @RoutePage()
 class SalesModeScreen extends StatefulWidget {

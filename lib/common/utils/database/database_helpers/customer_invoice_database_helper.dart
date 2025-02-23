@@ -6,7 +6,7 @@ import 'package:test_pos_app/common/models/customer_invoice_model.dart';
 import 'package:test_pos_app/common/models/place_model.dart';
 import 'package:test_pos_app/common/utils/database/app_database.dart';
 import 'package:drift/drift.dart'; // import for "&" or "|"
-import 'package:test_pos_app/features/order_feature/data/models/order_item_model.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
 
 // in order to use "&" or "|" expression import drift.dart package
 final class CustomerInvoiceDatabaseHelper {

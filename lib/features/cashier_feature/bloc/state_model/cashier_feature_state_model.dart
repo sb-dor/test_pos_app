@@ -1,8 +1,8 @@
 import 'package:test_pos_app/common/models/customer_invoice_model.dart';
-import 'package:test_pos_app/injections/injections.dart';
+import 'package:test_pos_app/common/utils/paginate_list_helper.dart';
 
 class CashierFeatureStateModel {
-  final _paginateHelper = locator<PaginateListHelper>();
+  final _paginateHelper = PaginateListHelper();
 
   bool _hasMore = true;
 

@@ -1,12 +1,11 @@
-import 'package:test_pos_app/features/order_feature/data/models/order_item_model.dart';
-import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
 
-extension OrderItemExtensions on List<OrderItem> {
+extension OrderItemExtensions on List<OrderItemModel> {
   double total() {
-    return fold(0.0, (prev, item) => prev += (OrderItemModel.fromEntity(item)?.total() ?? 0.0));
+    return fold(0.0, (prev, item) => prev += (item.total() ?? 0.0));
   }
 
-  double totalQty(){
+  double totalQty() {
     return fold(0.0, (prev, item) => prev += (item.qty ?? 0.0));
   }
 }

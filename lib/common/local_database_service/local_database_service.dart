@@ -6,7 +6,7 @@ import 'package:test_pos_app/common/global_usages/extensions/order_item_extentio
 import 'package:test_pos_app/common/models/customer_invoice_detail_model.dart';
 import 'package:test_pos_app/common/models/customer_invoice_model.dart';
 import 'package:test_pos_app/common/models/place_model.dart';
-import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
 
 @Deprecated("No useful anymore")
 class LocalDatabaseService {
@@ -99,7 +99,7 @@ class LocalDatabaseService {
     }
   }
 
-  Future<void> deleteOrderItemFromOrder(OrderItem? orderItem, PlaceModel? place) async {
+  Future<void> deleteOrderItemFromOrder(OrderItemModel? orderItem, PlaceModel? place) async {
     final checkInvoiceForPlace = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status = ?",
@@ -128,7 +128,7 @@ class LocalDatabaseService {
     }
   }
 
-  Future<bool> finishCustomerInvoice(PlaceModel? place, List<OrderItem> items) async {
+  Future<bool> finishCustomerInvoice(PlaceModel? place, List<OrderItemModel> items) async {
     final currentDateTime = DateTime.now().toString().substring(0, 19);
     await database.update(
       customerInvoiceTable,

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:test_pos_app/common/global_data/global_data.dart';
 import 'package:test_pos_app/common/models/product_model.dart';
 import 'package:test_pos_app/common/utils/database/app_database.dart';
-import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
+import 'package:test_pos_app/features/order_feature/models/order_item_model.dart';
 
 @immutable
 class CustomerInvoiceDetailModel {
@@ -33,7 +33,7 @@ class CustomerInvoiceDetailModel {
         total: db['total'],
       );
 
-  factory CustomerInvoiceDetailModel.fromOrderItem(OrderItem? item) {
+  factory CustomerInvoiceDetailModel.fromOrderItem(OrderItemModel? item) {
     return CustomerInvoiceDetailModel(
       product: item?.product,
       price: item?.price,
