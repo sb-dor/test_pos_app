@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/src/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/src/common/utils/constants/constants.dart';
 import 'package:test_pos_app/src/common/models/category_model.dart';
 import 'package:test_pos_app/src/common/models/place_model.dart';
 import 'package:test_pos_app/src/common/models/product_model.dart';

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:test_pos_app/src/common/global_data/global_data.dart';
-import 'package:test_pos_app/src/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/src/common/utils/constants/constants.dart';
 import 'package:test_pos_app/src/common/uikit/main_app_drawer.dart';
 import 'package:test_pos_app/src/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/src/features/order_feature/bloc/order_feature_bloc.dart';

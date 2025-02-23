@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/src/common/global_usages/constants/constants.dart';
-import 'package:test_pos_app/src/common/global_usages/extensions/order_item_extentions.dart';
+import 'package:test_pos_app/src/common/utils/constants/constants.dart';
+import 'package:test_pos_app/src/common/utils/extensions/order_item_extentions.dart';
 import 'package:test_pos_app/src/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/src/features/order_feature/bloc/order_feature_bloc.dart';
 import 'package:test_pos_app/src/features/order_feature/bloc/order_feature_events.dart';

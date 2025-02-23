@@ -1,6 +1,6 @@
 import 'package:test_pos_app/src/common/global_data/global_data.dart';
-import 'package:test_pos_app/src/common/global_usages/constants/constants.dart';
-import 'package:test_pos_app/src/common/global_usages/extensions/order_item_extentions.dart';
+import 'package:test_pos_app/src/common/utils/constants/constants.dart';
+import 'package:test_pos_app/src/common/utils/extensions/order_item_extentions.dart';
 import 'package:test_pos_app/src/common/models/customer_invoice_detail_model.dart';
 import 'package:test_pos_app/src/common/models/customer_invoice_model.dart';
 import 'package:test_pos_app/src/common/models/place_model.dart';
