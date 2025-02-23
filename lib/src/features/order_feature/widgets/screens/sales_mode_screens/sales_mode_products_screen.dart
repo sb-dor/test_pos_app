@@ -73,7 +73,7 @@ class _SalesModeProductsScreenState extends State<SalesModeProductsScreen> {
                         OrderingProducts(),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             );

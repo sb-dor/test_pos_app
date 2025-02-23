@@ -88,9 +88,9 @@ class _OrderingProductsState extends State<OrderingProducts> {
                                       fontSize: 11,
                                       color: Colors.grey,
                                     ),
-                                  )
+                                  ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -100,7 +100,7 @@ class _OrderingProductsState extends State<OrderingProducts> {
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                        )
+                        ),
                       ],
                     ),
                   ),

@@ -22,7 +22,7 @@ class PlaceWidget extends StatelessWidget {
         orderFeatureBloc.events.add(AddPlaceEvent(place));
         AutoRouter.of(context).push(const SalesModeRoute());
       },
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.amberAccent.shade100,
           borderRadius: BorderRadius.circular(10),

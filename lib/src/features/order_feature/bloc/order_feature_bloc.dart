@@ -86,7 +86,7 @@ class OrderFeatureBloc {
   }
 
   static Stream<OrderFeatureStates> _decrementOrderItemQtyEvent(
-      DecrementOrderItemQtyEvent event) async* {
+      DecrementOrderItemQtyEvent event,) async* {
     final item = _currentStateModel.decrementOrderItem(event.product);
     await _iOrderFeatureRepo.addToDb(place: _currentStateModel.place, item: item);
     yield InitialOrderFeatureState(_currentStateModel);

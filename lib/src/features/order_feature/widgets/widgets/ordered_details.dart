@@ -118,7 +118,7 @@ class _OrderedDetailsState extends State<OrderedDetails> {
                                   ),
                                 ),
                               ],
-                            )
+                            ),
                         ],
                       ),
                     ),

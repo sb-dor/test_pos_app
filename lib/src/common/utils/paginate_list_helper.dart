@@ -1,7 +1,7 @@
 class PaginateListHelper {
   //temp function, not usable, just for testing.
    int checkListLength(
-      {required List<dynamic> wholeList, required List<dynamic> currentList, int perPage = 30}) {
+      {required List<dynamic> wholeList, required List<dynamic> currentList, int perPage = 30,}) {
     return (currentList.length + perPage) > wholeList.length
         ? wholeList.length
         : (currentList.length + perPage);
@@ -12,7 +12,7 @@ class PaginateListHelper {
   ///
   ///checks is list has more or not
    bool checkHasMoreList(
-      {required List<dynamic> wholeList, required List<dynamic> currentList, int perPage = 30}) {
+      {required List<dynamic> wholeList, required List<dynamic> currentList, int perPage = 30,}) {
     return (currentList.length + perPage) > wholeList.length ? false : true;
   }
 
@@ -26,19 +26,19 @@ class PaginateListHelper {
       {required List<T> wholeList,
       required List<T> currentList,
       int perPage = 30,
-      bool showingCircularProgress = true}) {
+      bool showingCircularProgress = true,}) {
     //if do not want to show any progress indicators in your screen -> set "showingCircularProgress" to "false"
     //you should not use any check variable, this function parameter "showingCircularProgress" will know automatically
     //and it checks whether list still has items or not
     if (!showingCircularProgress) {
-      bool hasMore = currentList.length >= wholeList.length ? false : true;
+      final bool hasMore = currentList.length >= wholeList.length ? false : true;
       if (!hasMore) return [];
     }
     //check in which list index we are at
-    int check = (currentList.length + perPage) > wholeList.length
+    final int check = (currentList.length + perPage) > wholeList.length
         ? wholeList.length
         : (currentList.length + perPage);
-    List<T> pagList = [];
+    final List<T> pagList = [];
     for (int i = currentList.length; i < check; i++) {
       pagList.add(wholeList[i]);
     }

@@ -169,9 +169,9 @@ class LocalDatabaseService {
         .toList();
 
     return (await database.query(customerInvoiceTable,
-            where: "status is null", orderBy: "invoice_datetime desc"))
+            where: "status is null", orderBy: "invoice_datetime desc",))
         .map((invoice) => CustomerInvoiceModel.fromDb(
-            invoice, details.where((e) => e.customerInvoiceId == invoice['id']).toList()))
+            invoice, details.where((e) => e.customerInvoiceId == invoice['id']).toList(),),)
         .toList();
   }
 }

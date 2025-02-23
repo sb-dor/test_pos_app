@@ -40,7 +40,7 @@ class _OrderCategoriesState extends State<OrderCategories> {
             final category = GlobalData.categories[index];
             return GestureDetector(
               onTap: () => _orderFeatureBloc.events.add(SelectCategoryEvent(category)),
-              child: Container(
+              child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Colors.amberAccent.shade100,
                   borderRadius: BorderRadius.circular(10),
