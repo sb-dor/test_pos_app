@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:test_pos_app/common/global_data/global_data.dart';
 import 'package:test_pos_app/common/global_usages/constants/constants.dart';
 import 'package:test_pos_app/common/uikit/main_app_drawer.dart';
+import 'package:test_pos_app/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
-import 'package:test_pos_app/injections/injections.dart';
-
 import 'widgets/places_widgets/place_widget.dart';
 import 'widgets/places_widgets/vip_place_widget.dart';
 
@@ -23,7 +22,7 @@ class _OrderFeaturePageState extends State<OrderFeaturePage> {
   @override
   void initState() {
     super.initState();
-    _orderFeatureBloc = locator<OrderFeatureBloc>();
+    _orderFeatureBloc = DependenciesScope.of(context, listen: false).orderFeatureBloc;
   }
 
   @override

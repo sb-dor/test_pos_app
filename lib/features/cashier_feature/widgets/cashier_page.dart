@@ -5,8 +5,7 @@ import 'package:test_pos_app/common/uikit/main_app_drawer.dart';
 import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_bloc.dart';
 import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_events.dart';
 import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_states.dart';
-import 'package:test_pos_app/injections/injections.dart';
-
+import 'package:test_pos_app/features/initialization/widgets/dependencies_scope.dart';
 import 'widgets/cashier_invoice_widget.dart';
 
 @RoutePage()
@@ -23,7 +22,7 @@ class _CashierPageState extends State<CashierPage> {
   @override
   void initState() {
     super.initState();
-    _cashierFeatureBloc = locator<CashierFeatureBloc>();
+    _cashierFeatureBloc = DependenciesScope.of(context, listen: false).cashierFeatureBloc;
     _cashierFeatureBloc.events.add(LoadAllInvoicesToListEvent());
   }
 

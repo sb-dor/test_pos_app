@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test_pos_app/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_events.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_states.dart';
-import 'package:test_pos_app/injections/injections.dart';
 
 class OrderedDetails extends StatefulWidget {
   const OrderedDetails({super.key});
@@ -17,7 +17,7 @@ class _OrderedDetailsState extends State<OrderedDetails> {
   @override
   void initState() {
     super.initState();
-    _orderFeatureBloc = locator<OrderFeatureBloc>();
+    _orderFeatureBloc = DependenciesScope.of(context, listen: false).orderFeatureBloc;
   }
 
   @override

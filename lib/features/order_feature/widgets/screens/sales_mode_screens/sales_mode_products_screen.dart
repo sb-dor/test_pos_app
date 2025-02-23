@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:test_pos_app/common/global_usages/constants/constants.dart';
 import 'package:test_pos_app/common/global_usages/extensions/order_item_extentions.dart';
+import 'package:test_pos_app/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_bloc.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_events.dart';
 import 'package:test_pos_app/features/order_feature/bloc/order_feature_states.dart';
 import 'package:test_pos_app/features/order_feature/widgets/widgets/order_categories.dart';
 import 'package:test_pos_app/features/order_feature/widgets/widgets/ordered_details.dart';
 import 'package:test_pos_app/features/order_feature/widgets/widgets/ordering_products.dart';
-import 'package:test_pos_app/injections/injections.dart';
 
 class SalesModeProductsScreen extends StatefulWidget {
   const SalesModeProductsScreen({super.key});
@@ -22,7 +22,7 @@ class _SalesModeProductsScreenState extends State<SalesModeProductsScreen> {
   @override
   void initState() {
     super.initState();
-    _orderFeatureBloc = locator<OrderFeatureBloc>();
+    _orderFeatureBloc = DependenciesScope.of(context, listen: false).orderFeatureBloc;
   }
 
   @override
