@@ -1,7 +1,9 @@
 import 'package:collection/collection.dart';
+import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
 import 'package:test_pos_app/common/global_data/global_data.dart';
 import 'package:test_pos_app/common/models/product_model.dart';
+import 'package:test_pos_app/common/utils/database/app_database.dart';
 import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
 
 @immutable
@@ -46,4 +48,14 @@ class CustomerInvoiceDetailModel {
         "qty": qty,
         "total": (price ?? 0.0) * (qty ?? 0.0),
       };
+
+  CustomerInvoiceDetailsTableCompanion toDbCompanion(int? customerInvoiceId) {
+    return CustomerInvoiceDetailsTableCompanion(
+      customerInvoiceId: Value(customerInvoiceId),
+      productId: Value(product?.id),
+      price: Value(price),
+      qty: Value(qty),
+      total: Value(total),
+    );
+  }
 }

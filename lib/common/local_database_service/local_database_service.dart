@@ -1,5 +1,11 @@
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:test_pos_app/features/order_feature/data/models/order_item_model.dart';
+import 'package:test_pos_app/common/global_data/global_data.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/global_usages/extensions/order_item_extentions.dart';
+import 'package:test_pos_app/common/models/customer_invoice_detail_model.dart';
+import 'package:test_pos_app/common/models/customer_invoice_model.dart';
+import 'package:test_pos_app/common/models/place_model.dart';
 import 'package:test_pos_app/features/order_feature/domain/entities/order_item.dart';
 
 @Deprecated("No useful anymore")
@@ -11,7 +17,7 @@ class LocalDatabaseService {
 
   Future<void> initDatabase() async {
     final databasePath = await getDatabasesPath();
-    String path = join(databasePath, 'test_pos_app.db');
+    final String path = join(databasePath, 'test_pos_app.db');
 
     database = await openDatabase(
       path,
@@ -37,7 +43,7 @@ class LocalDatabaseService {
     );
   }
 
-  Future<void> addProduct(Place? place, CustomerInvoiceDetailModel? item) async {
+  Future<void> addProduct(PlaceModel? place, CustomerInvoiceDetailModel? item) async {
     final checkInvoiceForPlace = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status = ?",
@@ -93,7 +99,7 @@ class LocalDatabaseService {
     }
   }
 
-  Future<void> deleteOrderItemFromOrder(OrderItem? orderItem, Place? place) async {
+  Future<void> deleteOrderItemFromOrder(OrderItem? orderItem, PlaceModel? place) async {
     final checkInvoiceForPlace = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status = ?",
@@ -122,7 +128,7 @@ class LocalDatabaseService {
     }
   }
 
-  Future<bool> finishCustomerInvoice(Place? place, List<OrderItem> items) async {
+  Future<bool> finishCustomerInvoice(PlaceModel? place, List<OrderItem> items) async {
     final currentDateTime = DateTime.now().toString().substring(0, 19);
     await database.update(
       customerInvoiceTable,
@@ -139,14 +145,14 @@ class LocalDatabaseService {
     return true;
   }
 
-  Future<List<CustomerInvoiceDetail>> customerInvoiceDetails(Place? place) async {
+  Future<List<CustomerInvoiceDetailModel>> customerInvoiceDetails(PlaceModel? place) async {
     final invoice = await database.query(
       customerInvoiceTable,
       where: "place_id = ? and status is not null",
       whereArgs: [place?.id],
     );
 
-    if (invoice.isEmpty) return <CustomerInvoiceDetail>[];
+    if (invoice.isEmpty) return <CustomerInvoiceDetailModel>[];
 
     final customerInvoiceDetails = await database.query(
       customerInvoicesDetailsTable,
@@ -154,12 +160,12 @@ class LocalDatabaseService {
       whereArgs: [invoice.first['id']],
     );
 
-    return customerInvoiceDetails.map((e) => CustomerInvoiceDetailModel.fromDb(e)).toList();
+    return customerInvoiceDetails.map(CustomerInvoiceDetailModel.fromDb).toList();
   }
 
   Future<List<CustomerInvoiceModel>> customerInvoices() async {
     final details = (await database.query(customerInvoicesDetailsTable))
-        .map((e) => CustomerInvoiceDetailModel.fromDb(e))
+        .map(CustomerInvoiceDetailModel.fromDb)
         .toList();
 
     return (await database.query(customerInvoiceTable,
