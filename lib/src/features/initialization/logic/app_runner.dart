@@ -23,7 +23,6 @@ final class AppRunner {
           final WindowOptions windowOptions = WindowOptions(
             size: Size(800, 600),
             minimumSize: Size(800, 600),
-            maximumSize: Size.infinite,
             center: true,
             backgroundColor: Colors.transparent,
             // skipTaskbar: false,
