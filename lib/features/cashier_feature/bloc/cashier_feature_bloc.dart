@@ -1,16 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:test_pos_app/features/cashier_feature/domain/repo/cashier_feature_repo.dart';
-import 'package:test_pos_app/features/cashier_feature/domain/usecases/cashier_get_invoice_usecase.dart';
-import 'package:test_pos_app/features/cashier_feature/view/bloc/state_model/cashier_feature_state_model.dart';
+import 'package:test_pos_app/features/cashier_feature/data/cashier_feature_repo.dart';
 import 'cashier_feature_events.dart';
 import 'cashier_feature_states.dart';
+import 'state_model/cashier_feature_state_model.dart';
 
 @immutable
 class CashierFeatureBloc {
   static late BehaviorSubject<CashierFeatureStates> _currentState;
   static late CashierFeatureStateModel _currentStateModel;
-  static late CashierGetInvoiceUsecase _cashierGetInvoiceUsecase;
+  static late ICashierFeatureRepo _iCashierFeatureRepo;
 
   final Sink<CashierFeatureEvents> events;
   final BehaviorSubject<CashierFeatureStates> _states;
@@ -23,10 +22,10 @@ class CashierFeatureBloc {
   }) : _states = states;
 
   factory CashierFeatureBloc({
-    required CashierFeatureRepo cashierFeatureRepo,
+    required ICashierFeatureRepo cashierFeatureRepo,
   }) {
     _currentStateModel = CashierFeatureStateModel();
-    _cashierGetInvoiceUsecase = CashierGetInvoiceUsecase(cashierFeatureRepo);
+    _iCashierFeatureRepo = cashierFeatureRepo;
 
     final eventsBehavior = BehaviorSubject<CashierFeatureEvents>();
 
@@ -54,7 +53,7 @@ class CashierFeatureBloc {
   ) async* {
     try {
       yield LoadingCashierFeatureState(_currentStateModel);
-      final invoices = await _cashierGetInvoiceUsecase.invoices();
+      final invoices = await _iCashierFeatureRepo.invoices();
       _currentStateModel.clearData();
       _currentStateModel.setToAllCustomerInvoices(invoices);
       _currentStateModel.paginate();

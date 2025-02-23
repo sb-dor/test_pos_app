@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/app_routing/app_routing.dart';
 import 'package:test_pos_app/injections/injections.dart';
+
+import 'common/app_routing/app_routing.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

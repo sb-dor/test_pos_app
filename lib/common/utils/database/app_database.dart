@@ -6,10 +6,12 @@ import 'tables/customer_invoices_table.dart';
 
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [
-  CustomerInvoicesTable,
-  CustomerInvoiceDetailsTable,
-])
+@DriftDatabase(
+  tables: [
+    CustomerInvoicesTable,
+    CustomerInvoiceDetailsTable,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 

@@ -1,12 +1,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/global_usages/constants/constants.dart';
-import 'package:test_pos_app/core/global_usages/widges/main_app_drawer.dart';
-import 'package:test_pos_app/features/cashier_feature/view/bloc/cashier_feature_bloc.dart';
-import 'package:test_pos_app/features/cashier_feature/view/bloc/cashier_feature_events.dart';
-import 'package:test_pos_app/features/cashier_feature/view/bloc/cashier_feature_states.dart';
-import 'package:test_pos_app/features/cashier_feature/view/pages/widgets/cashier_invoice_widget.dart';
+import 'package:test_pos_app/common/global_usages/constants/constants.dart';
+import 'package:test_pos_app/common/uikit/main_app_drawer.dart';
+import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_bloc.dart';
+import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_events.dart';
+import 'package:test_pos_app/features/cashier_feature/bloc/cashier_feature_states.dart';
 import 'package:test_pos_app/injections/injections.dart';
+
+import 'widgets/cashier_invoice_widget.dart';
 
 @RoutePage()
 class CashierPage extends StatefulWidget {

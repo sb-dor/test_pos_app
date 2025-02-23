@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_pos_app/core/global_models/entities/customer_invoice.dart';
+import 'package:test_pos_app/common/models/customer_invoice_model.dart';
 
 class CashierInvoiceWidget extends StatelessWidget {
-  final CustomerInvoice customerInvoice;
+  final CustomerInvoiceModel customerInvoice;
 
   const CashierInvoiceWidget({
     super.key,

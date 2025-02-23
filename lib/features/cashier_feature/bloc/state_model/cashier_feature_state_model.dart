@@ -1,5 +1,4 @@
-import 'package:test_pos_app/core/global_models/entities/customer_invoice.dart';
-import 'package:test_pos_app/core/global_usages/utils/paginate_list_helper.dart';
+import 'package:test_pos_app/common/models/customer_invoice_model.dart';
 import 'package:test_pos_app/injections/injections.dart';
 
 class CashierFeatureStateModel {
@@ -9,13 +8,14 @@ class CashierFeatureStateModel {
 
   bool get hasMore => _hasMore;
 
-  List<CustomerInvoice> _allCustomerInvoices = [];
+  List<CustomerInvoiceModel> _allCustomerInvoices = [];
 
-  void setToAllCustomerInvoices(List<CustomerInvoice> invoices) => _allCustomerInvoices = invoices;
+  void setToAllCustomerInvoices(List<CustomerInvoiceModel> invoices) =>
+      _allCustomerInvoices = invoices;
 
-  List<CustomerInvoice> _invoices = [];
+  List<CustomerInvoiceModel> _invoices = [];
 
-  List<CustomerInvoice> get invoices => _invoices;
+  List<CustomerInvoiceModel> get invoices => _invoices;
 
   void clearData() {
     _hasMore = true;
@@ -30,7 +30,7 @@ class CashierFeatureStateModel {
       currentList: _invoices,
       perPage: 15,
     );
-    _invoices = _paginateHelper.paginateList<CustomerInvoice>(
+    _invoices = _paginateHelper.paginateList<CustomerInvoiceModel>(
       wholeList: _allCustomerInvoices,
       currentList: _invoices,
       perPage: 15,
