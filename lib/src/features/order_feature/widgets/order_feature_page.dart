@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:test_pos_app/src/common/global_data/global_data.dart';
 import 'package:test_pos_app/src/common/utils/constants/constants.dart';
 import 'package:test_pos_app/src/common/uikit/main_app_drawer.dart';
-import 'package:test_pos_app/src/features/initialization/logic/app_runner.dart';
 import 'package:test_pos_app/src/features/initialization/widgets/dependencies_scope.dart';
 import 'package:test_pos_app/src/features/order_feature/bloc/order_feature_bloc.dart';
-import 'package:window_manager/window_manager.dart';
 import 'widgets/places_widgets/place_widget.dart';
 import 'widgets/places_widgets/vip_place_widget.dart';
 

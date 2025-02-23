@@ -9,7 +9,7 @@ import 'state_model/order_feature_state_model.dart';
 
 @immutable
 class OrderFeatureBloc {
-  static late BehaviorSubject<OrderFeatureStates> _currentState;
+  // static late BehaviorSubject<OrderFeatureStates> _currentState;
   static late OrderFeatureStateModel _currentStateModel;
   static late IOrderFeatureRepo _iOrderFeatureRepo;
 
@@ -37,7 +37,7 @@ class OrderFeatureBloc {
 
     final orderBehavior = BehaviorSubject<OrderFeatureStates>()..addStream(orderStream);
 
-    _currentState = orderBehavior;
+    // _currentState = orderBehavior;
 
     return OrderFeatureBloc._(events: eventsBehavior.sink, states: orderBehavior);
   }
@@ -86,7 +86,8 @@ class OrderFeatureBloc {
   }
 
   static Stream<OrderFeatureStates> _decrementOrderItemQtyEvent(
-      DecrementOrderItemQtyEvent event,) async* {
+    DecrementOrderItemQtyEvent event,
+  ) async* {
     final item = _currentStateModel.decrementOrderItem(event.product);
     await _iOrderFeatureRepo.addToDb(place: _currentStateModel.place, item: item);
     yield InitialOrderFeatureState(_currentStateModel);

@@ -25,7 +25,7 @@ class DependenciesScope extends InheritedWidget {
   final DependencyContainer dependencies;
 
   @override
-  bool updateShouldNotify(DependenciesScope old) {
+  bool updateShouldNotify(DependenciesScope oldWidget) {
     return false;
   }
 }
